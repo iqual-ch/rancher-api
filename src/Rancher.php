@@ -3,7 +3,9 @@ namespace Tyldar\Rancher;
 
 use Tyldar\Rancher\Client;
 use Tyldar\Rancher\Helpers;
+use Tyldar\Rancher\Models\Project;
 use Tyldar\Rancher\Resources\Containers;
+use Tyldar\Rancher\Resources\Projects;
 use Tyldar\Rancher\Resources\Services;
 use Tyldar\Rancher\Resources\Hosts;
 use Tyldar\Rancher\Resources\Stacks;
@@ -40,6 +42,10 @@ class Rancher
     public function stacks()
     {
         return new Stacks($this->client);
+    }
+
+    public function projects() {
+      return new Projects($this->client);
     }
 }
 
