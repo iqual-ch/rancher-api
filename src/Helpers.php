@@ -79,7 +79,7 @@ class Helpers
         return $services->create($service);
     }
 
-    public function createIngress($domain_name, $namespace_id, $project_id, $host, $service_id)
+    public function createIngress($name, $namespace_id, $project_id, $host, $service_id, $certificate_id)
     {
       $ingresses = new Ingresses($this->client, $project_id);
 
@@ -89,7 +89,7 @@ class Helpers
         "nginx.ingress.kubernetes.io/proxy-body-size"=> "100M",
         "nginx.ingress.kubernetes.io/proxy-buffer-size"=> "16K"
       ];
-      $ingress->name = $domain_name . '-docker-dev-iqual-ch-ingress';
+      $ingress->name = $name;
       $ingress->namespaceId = $namespace_id;
       $ingress->projectId = $project_id;
       $ingress->rules = [[
@@ -105,7 +105,7 @@ class Helpers
         ]
       ];
 
-      $ingress->tls->certificateId = $namespace_id . ":" . $domain_name ."-docker-dev-iqual-ch-autogen";
+      $ingress->tls->certificateId = $certificate_id;
       $ingress->tls->hosts = [$host];
 
       return $ingresses->create($ingress);
