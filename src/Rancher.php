@@ -5,6 +5,7 @@ use Tyldar\Rancher\Client;
 use Tyldar\Rancher\Helpers;
 use Tyldar\Rancher\Models\Project;
 use Tyldar\Rancher\Resources\Containers;
+use Tyldar\Rancher\Resources\Ingresses;
 use Tyldar\Rancher\Resources\Projects;
 use Tyldar\Rancher\Resources\Services;
 use Tyldar\Rancher\Resources\Hosts;
@@ -46,6 +47,10 @@ class Rancher
 
     public function projects() {
       return new Projects($this->client);
+    }
+
+    public function ingresses($project_id) {
+      return new Ingresses($this->client, $project_id);
     }
 }
 
