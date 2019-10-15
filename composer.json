@@ -1,10 +1,10 @@
 {
-    "name": "tyldar/rancher-api",
+    "name": "iqual/rancher-api",
     "type": "library",
     "authors": [
         {
-            "name": "Tyldar",
-            "email": "tyldar@hotmail.com"
+            "name": "Iqual",
+            "email": "iqual@iqual.ch"
         }
     ],
     "require": {
