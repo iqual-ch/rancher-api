@@ -105,6 +105,7 @@ class Helpers
         ]
       ];
 
+
       $ingress->tls = [
       	'certificateId' => $certificate_id,
 				'hosts' => [$host]
