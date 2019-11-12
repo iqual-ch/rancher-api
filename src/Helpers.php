@@ -105,8 +105,10 @@ class Helpers
         ]
       ];
 
-      $ingress->tls->certificateId = $certificate_id;
-      $ingress->tls->hosts = [$host];
+      $ingress->tls = [
+      	'certificateId' => $certificate_id,
+				'hosts' => [$host]
+			];
 
       return $ingresses->create($ingress);
     }
