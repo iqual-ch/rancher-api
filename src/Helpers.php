@@ -85,12 +85,12 @@ class Helpers
 
       $ingress = new Ingress();
       $ingress->annotations = [
-        "certmanager.k8s.io/cluster-issuer"=>"letsencrypt-prod",
+        "cert-manager.io/cluster-issuer"=>"letsencrypt-prod",
         "nginx.ingress.kubernetes.io/proxy-body-size"=> "100M",
         "nginx.ingress.kubernetes.io/proxy-buffer-size"=> "16K"
       ];
       $ingress->name = $name;
-      $ingress->namespaceId = $namespace_id;
+			$ingress->namespaceId = $namespace_id;
       $ingress->projectId = $project_id;
       $ingress->rules = [[
           'host' => $host,
