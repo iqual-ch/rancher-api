@@ -106,10 +106,11 @@ class Helpers
       ];
 
 
-      $ingress->tls = [
+      $ingress->tls = [[
       	'certificateId' => $certificate_id,
-				'hosts' => [$host]
-			];
+				'hosts' => [$host],
+				'type' => "/v3/project/schemas/ingressTLS"
+			]];
 
       return $ingresses->create($ingress);
     }
