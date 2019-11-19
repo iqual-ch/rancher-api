@@ -41,4 +41,8 @@ class Ingress extends AbstractModel
 
   public $tls;
 
+  public $projectId;
+
+  public $rules;
+
 }
