@@ -31,6 +31,42 @@ class Containers
         return $tmp;
     }
 
+    /**
+     * @param array $criteria
+     *
+     * @return array
+     */
+    public function findBy($criteria)
+    {
+        $retn = [];
+
+        $containers = $this->client->request('GET', $this->endpoint.'/?'.http_build_query($criteria), [])->data;
+        foreach($containers as $key=>$container)
+        {
+            if($container->type != "container")
+                continue;
+
+            array_push($retn, $this->format($container, new Container()));
+        }
+        return $retn;
+    }
+
+    /**
+     * @param array $criteria
+     *
+     * @return Container|null
+     */
+    public function findOneBy($criteria)
+    {
+        $containers = $this->findBy($criteria);
+
+        if (count($containers) > 0) {
+            return $this->format($containers[0], new Container());
+        }
+
+        return NULL;
+    }
+
     public function getAll()
     {
         $retn = [];

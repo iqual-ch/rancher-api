@@ -26,6 +26,42 @@ class Stacks
         return $tmp;
     }
 
+    /**
+     * @param array $criteria
+     *
+     * @return array
+     */
+    public function findBy($criteria)
+    {
+        $retn = [];
+
+        $stacks = $this->client->request('GET', $this->endpoint.'/?'.http_build_query($criteria), [])->data;
+        foreach($stacks as $key=>$stack)
+        {
+            if($stack->type != "stack")
+                continue;
+
+            array_push($retn, $this->format($stack, new Stack()));
+        }
+        return $retn;
+    }
+
+    /**
+     * @param array $criteria
+     *
+     * @return Stack|null
+     */
+    public function findOneBy($criteria)
+    {
+        $stacks = $this->findBy($criteria);
+
+        if (count($stacks) > 0) {
+            return $this->format($stacks[0], new Stack());
+        }
+
+        return NULL;
+    }
+
     public function getAll()
     {
         $retn = [];
