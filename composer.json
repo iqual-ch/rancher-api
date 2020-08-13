@@ -1,5 +1,6 @@
 {
     "name": "iqual/rancher-api",
+    "description": "iqual version of Tyldar/rancher-api",
     "type": "library",
     "authors": [
         {
